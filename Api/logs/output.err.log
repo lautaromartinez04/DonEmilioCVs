@@ -913,3 +913,35 @@ Traceback (most recent call last):
 AttributeError: module 'bcrypt' has no attribute '__about__'
 INFO:     ('192.168.0.123', 53563) - "WebSocket /ws?id=3&nombre=Gabriela" [accepted]
 INFO:     connection open
+INFO:     connection closed
+INFO:     ('192.168.0.161', 64256) - "WebSocket /ws?id=3&nombre=Gabriela" [accepted]
+INFO:     connection open
+INFO:     ('192.168.0.25', 52508) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     ('172.17.4.9', 58939) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     ('192.168.0.123', 54987) - "WebSocket /ws?id=3&nombre=Gabriela" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     ('172.17.4.9', 54391) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     ('192.168.0.25', 61512) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     ('192.168.0.25', 61515) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     connection closed
+INFO:     connection closed
+INFO:     ('192.168.0.199', 63607) - "WebSocket /ws?id=4&nombre=Fermin" [accepted]
+INFO:     connection open
+INFO:     ('192.168.0.199', 3422) - "WebSocket /ws?id=4&nombre=Fermin" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     ('192.168.0.25', 63472) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     connection closed

@@ -1,11 +1,13 @@
 // src/Routes/Dashboard.jsx
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { apiFetch } from "../api/client";
 import { useWebSocket } from "../context/WebSocketContext";
 
 export default function Dashboard() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [counts, setCounts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -51,6 +53,12 @@ export default function Dashboard() {
     }
   }, [lastMessage]);
 
+  const handleCardClick = (estado) => {
+    const newFilters = { q: "", estado, unidadId: "", puestoId: "", sort: "reciente" };
+    sessionStorage.setItem("postulaciones_filters", JSON.stringify(newFilters));
+    navigate("/postulaciones");
+  };
+
   return (
     <div className="w-full max-w-7xl mx-auto pb-10">
       <div className="bg-brand-500/10 border border-brand-500/30 text-brand-300 px-5 py-4 rounded-2xl flex items-center shadow-lg shadow-brand-500/5 mb-8 backdrop-blur-md">
@@ -85,7 +93,10 @@ export default function Dashboard() {
       {!loading && counts && (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 sm:mb-4 md:mb-4 lg:mb-6 mb-4">
-            <div className="bg-gray-900/60 backdrop-blur-xl border border-white/5 rounded-3xl p-6 text-center shadow-xl shadow-black/50 hover:-translate-y-1 hover:shadow-green-500/10 transition-all duration-300 relative overflow-hidden group">
+            <div
+              onClick={() => handleCardClick("destacada")}
+              className="cursor-pointer bg-gray-900/60 backdrop-blur-xl border border-white/5 rounded-3xl p-6 text-center shadow-xl shadow-black/50 hover:-translate-y-1 hover:shadow-green-500/10 transition-all duration-300 relative overflow-hidden group"
+            >
               <div className="absolute top-0 left-0 w-full h-1 bg-green-500"></div>
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
               <h6 className="text-green-400 text-xs font-bold uppercase tracking-widest mb-3 flex items-center justify-center gap-2"><i className="fa-solid fa-award"></i> Destacadas</h6>
@@ -93,7 +104,10 @@ export default function Dashboard() {
               <div className="absolute bottom-0 left-0 w-full h-1 bg-green-500"></div>
             </div>
 
-            <div className="bg-gray-900/60 backdrop-blur-xl border border-white/5 rounded-3xl p-6 text-center shadow-xl shadow-black/50 hover:-translate-y-1 hover:shadow-amber-500/10 transition-all duration-300 relative overflow-hidden group">
+            <div
+              onClick={() => handleCardClick("posible")}
+              className="cursor-pointer bg-gray-900/60 backdrop-blur-xl border border-white/5 rounded-3xl p-6 text-center shadow-xl shadow-black/50 hover:-translate-y-1 hover:shadow-amber-500/10 transition-all duration-300 relative overflow-hidden group"
+            >
               <div className="absolute top-0 left-0 w-full h-1 bg-amber-500"></div>
               <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
               <h6 className="text-amber-400 text-xs font-bold uppercase tracking-widest mb-3 flex items-center justify-center gap-2"><i className="fa-regular fa-star"></i> Posibles</h6>
@@ -101,7 +115,10 @@ export default function Dashboard() {
               <div className="absolute bottom-0 left-0 w-full h-1 bg-amber-500"></div>
             </div>
 
-            <div className="bg-gray-900/60 backdrop-blur-xl border border-white/5 rounded-3xl p-6 text-center shadow-xl shadow-black/50 hover:-translate-y-1 hover:shadow-red-500/10 transition-all duration-300 relative overflow-hidden group">
+            <div
+              onClick={() => handleCardClick("descartada")}
+              className="cursor-pointer bg-gray-900/60 backdrop-blur-xl border border-white/5 rounded-3xl p-6 text-center shadow-xl shadow-black/50 hover:-translate-y-1 hover:shadow-red-500/10 transition-all duration-300 relative overflow-hidden group"
+            >
               <div className="absolute top-0 left-0 w-full h-1 bg-red-500"></div>
               <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
               <h6 className="text-red-400 text-xs font-bold uppercase tracking-widest mb-3 flex items-center justify-center gap-2"><i className="fa-regular fa-circle-xmark"></i> Descartadas</h6>
@@ -112,14 +129,20 @@ export default function Dashboard() {
 
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-6 sm:mb-6 mb-4 lg:mb-6 md:mb-6">
-            <div className="group bg-gray-900/60 backdrop-blur-xl border border-white/5 rounded-3xl p-6 text-center shadow-xl shadow-black/50 hover:-translate-y-1 hover:shadow-brand-500/10 transition-all duration-300 relative overflow-hidden">
+            <div
+              onClick={() => handleCardClick("nueva")}
+              className="cursor-pointer group bg-gray-900/60 backdrop-blur-xl border border-white/5 rounded-3xl p-6 text-center shadow-xl shadow-black/50 hover:-translate-y-1 hover:shadow-brand-500/10 transition-all duration-300 relative overflow-hidden"
+            >
               <div className="absolute top-0 left-0 w-full h-1 bg-brand-500"></div>
               <div className="absolute inset-0 bg-gradient-to-br from-brand-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
               <h6 className="text-brand-400 text-xs font-bold uppercase tracking-widest mb-3 flex items-center justify-center gap-2"><i className="fa-solid fa-sparkles"></i> Nuevas</h6>
               <h3 className="text-5xl font-extrabold text-gray-100 drop-shadow-md">{counts.nueva}</h3>
               <div className="absolute bottom-0 left-0 w-full h-1 bg-brand-500"></div>
             </div>
-            <div className="group bg-gray-900/60 backdrop-blur-xl border border-white/5 rounded-3xl p-6 text-center shadow-xl shadow-black/50 hover:-translate-y-1 hover:shadow-gray-500/10 transition-all duration-300 relative overflow-hidden">
+            <div
+              onClick={() => handleCardClick("")}
+              className="cursor-pointer group bg-gray-900/60 backdrop-blur-xl border border-white/5 rounded-3xl p-6 text-center shadow-xl shadow-black/50 hover:-translate-y-1 hover:shadow-gray-500/10 transition-all duration-300 relative overflow-hidden"
+            >
               <div className="absolute top-0 left-0 w-full h-1 bg-gray-500"></div>
               <div className="absolute inset-0 bg-gradient-to-br from-gray-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
               <h6 className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-3 flex items-center justify-center gap-2"><i className="fa-solid fa-layer-group"></i> Total</h6>
