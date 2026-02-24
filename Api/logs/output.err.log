@@ -905,3 +905,11 @@ INFO:     ('192.168.0.161', 49505) - "WebSocket /ws?id=3&nombre=Gabriela" [accep
 INFO:     connection open
 INFO:     ('192.168.0.199', 47953) - "WebSocket /ws?id=4&nombre=Fermin" [accepted]
 INFO:     connection open
+(trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\Usuario\Documents\DonEmilioCVs\Api\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+INFO:     ('192.168.0.123', 53563) - "WebSocket /ws?id=3&nombre=Gabriela" [accepted]
+INFO:     connection open
