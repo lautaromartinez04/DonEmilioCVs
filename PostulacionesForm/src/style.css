@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --color-brand-50: #eff4ff;
+    --color-brand-100: #dbeafe;
+    --color-brand-200: #bfdbfe;
+    --color-brand-300: #93c5fd;
+    --color-brand-400: #60a5fa;
+    --color-brand-500: #0033a1;
+    /* Primary Brand Color */
+    --color-brand-600: #002982;
+    --color-brand-700: #001f63;
+    --color-brand-800: #001445;
+    --color-brand-900: #000a26;
+
+    --font-sans: "Lexend", system-ui, sans-serif;
+    --font-brand: "madetommy", sans-serif;
+}
+
+@layer base {
+    @font-face {
+        font-family: "madetommy";
+        src: url("./media/MADE_TOMMY_Regular_PERSONAL_USE (1).otf");
+    }
+
+    html {
+        font-family: var(--font-sans);
+        user-select: none;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        min-height: 100vh;
+        background: radial-gradient(1200px 800px at 10% -10%, #eef2ff 0%, transparent 60%),
+            radial-gradient(1000px 700px at 110% 10%, #f1fff7 0%, transparent 60%),
+            linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+    }
+}
+
+@layer utilities {
+    .brand-badge {
+        letter-spacing: .5px;
+    }
+
+    .card-ghost {
+        @apply bg-white/85 backdrop-blur-md border border-black/5 shadow-xl shadow-black/5 rounded-2xl;
+    }
+
+    .titulo {
+        font-family: var(--font-brand);
+        font-weight: bold;
+    }
+
+    .btn-enviar {
+        font-family: var(--font-brand);
+        @apply font-bold tracking-wide text-lg bg-[#0033a1] border-2 border-[#0033a1] text-white rounded-xl px-4 py-2 hover:bg-white hover:text-[#0033a1] transition-all duration-300 shadow-md active:scale-95 cursor-pointer;
+    }
+
+    .hr-solid {
+        border: 0;
+        height: 3px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #0033a1, rgba(0, 0, 0, 0));
+    }
+}

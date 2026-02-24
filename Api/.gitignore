@@ -1,0 +1,14 @@
+# Python
+**/__pycache__/
+*.pyc
+
+# Venvs
+venv/
+.env
+
+# Alembic (si lo agregás)
+alembic.ini
+
+# IDEs
+.vscode/
+.idea/

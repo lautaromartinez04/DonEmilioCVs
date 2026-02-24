@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+    /* Electric Cyan/Blue for dark mode pop */
+    --color-brand-50: #eff6ff;
+    --color-brand-100: #dbeafe;
+    --color-brand-200: #bfdbfe;
+    --color-brand-300: #93c5fd;
+    --color-brand-400: #60a5fa;
+    --color-brand-500: #3b82f6;
+    --color-brand-600: #2563eb;
+    --color-brand-700: #1d4ed8;
+    --color-brand-800: #1e40af;
+    --color-brand-900: #1e3a8a;
+    --font-sans: "Lexend", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-brand: "Lexend", sans-serif;
+}
+
+/* Custom Base Styles */
+@layer base {
+    @font-face {
+        font-family: "madetommy";
+        src: url("/assets/MADE_TOMMY_Regular_PERSONAL_USE (1).otf") format("opentype");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "madetommy";
+        src: url("/assets/MADE_TOMMY_Bold_PERSONAL_USE.otf") format("opentype");
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    html {
+        font-family: var(--font-sans);
+        scroll-behavior: smooth;
+        background-color: #030712;
+        /* gray-950 equivalent */
+    }
+
+    body {
+        @apply text-gray-100;
+    }
+}
+
+/* Custom Utility Extracted Classes */
+@layer utilities {
+    .glass-panel {
+        @apply bg-gray-900/60 backdrop-blur-xl border border-white/5 shadow-lg shadow-black/50;
+    }
+
+    .card-hover {
+        @apply transition-all duration-300 hover:shadow-2xl hover:shadow-brand-500/10 hover:-translate-y-1 hover:border-brand-500/30;
+    }
+}
+
+/* SweetAlert2 Global Dark Theme Overrides */
+div:where(.swal2-container) div:where(.swal2-popup) {
+    background-color: rgba(17, 24, 39, 0.95) !important;
+    /* gray-900 / 0.95 */
+    backdrop-filter: blur(16px) !important;
+    color: #f3f4f6 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 1.5rem !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+}
+
+div:where(.swal2-container) div:where(.swal2-toast) {
+    background-color: rgba(31, 41, 55, 0.95) !important;
+    /* gray-800 backdrop */
+    backdrop-filter: blur(12px) !important;
+    color: #f3f4f6 !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 1rem !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
+}
+
+div:where(.swal2-container) h2:where(.swal2-title),
+div:where(.swal2-container) div:where(.swal2-html-container) {
+    color: #f3f4f6 !important;
+}
+
+div:where(.swal2-container) button:where(.swal2-confirm) {
+    background-color: #3b82f6 !important;
+    border-radius: 0.75rem !important;
+    font-weight: 600 !important;
+}
+
+div:where(.swal2-container) button:where(.swal2-cancel) {
+    background-color: #374151 !important;
+    color: #f3f4f6 !important;
+    border-radius: 0.75rem !important;
+    font-weight: 600 !important;
+}
+
+div:where(.swal2-icon).swal2-warning {
+    border-color: #f59e0b !important;
+    color: #f59e0b !important;
+}
+
+div:where(.swal2-icon).swal2-error {
+    border-color: #ef4444 !important;
+    color: #ef4444 !important;
+}
+
+div:where(.swal2-icon).swal2-success {
+    border-color: #10b981 !important;
+    color: #10b981 !important;
+}
+
+div:where(.swal2-icon).swal2-info {
+    border-color: #3b82f6 !important;
+    color: #3b82f6 !important;
+}

@@ -1,0 +1,5 @@
+/* variables.css: for any pure CSS custom properties if needed by legacy parts */
+:root {
+    --primary-color: #0033a1;
+    --bg-color: #f8fafc;
+}

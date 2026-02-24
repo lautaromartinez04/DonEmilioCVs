@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>PDF Tester (fetch + blob)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; margin: 0; padding: 16px; line-height: 1.45; }
+    .card { border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; margin-bottom: 16px; background: #fff; }
+    label { font-weight: 600; display: block; margin: 6px 0 4px; }
+    input, textarea { width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 14px; }
+    .row { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 900px) { .row { grid-template-columns: 1fr 1fr; } }
+    button { padding: 8px 12px; border-radius: 8px; border: 1px solid #cbd5e1; background: #0ea5e9; color: #fff; cursor: pointer; }
+    button.secondary { background: #64748b; }
+    .actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .muted { color: #64748b; font-size: 13px; }
+    .error { color: #dc2626; }
+    .ok { color: #16a34a; }
+    .viewer { border: none; border-radius: 10px; width: 100%; height: 75vh; background: #f8fafc; }
+    .hide { display: none; }
+    .log { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; white-space: pre-wrap; background: #0b1020; color: #e2e8f0; padding: 8px; border-radius: 8px; height: 160px; overflow: auto; }
+    .link { text-decoration: none; border-bottom: 1px dashed currentColor; }
+  </style>
+</head>
+<body>
+  <h1>PDF Tester (fetch → Blob → ObjectURL)</h1>
+  <p class="muted">Prueba simple para ver PDFs protegidos por <code>Authorization: Bearer …</code> como <b>blob:</b> sin que el iframe se vaya a tu SPA.</p>
+
+  <div class="card">
+    <div class="row">
+      <div>
+        <label for="url">URL del PDF (endpoint inline)</label>
+        <input id="url" type="text" value="http://192.168.0.25:8000/postulaciones/1/cv/inline" />
+      </div>
+      <div>
+        <label for="accept">Accept header</label>
+        <input id="accept" type="text" value="application/pdf" />
+      </div>
+      <div>
+        <label for="token">Bearer token (solo el JWT, sin la palabra Bearer)</label>
+        <textarea id="token" rows="3">PONÉ_ACÁ_TU_TOKEN</textarea>
+      </div>
+      <div>
+        <label for="viewer">Viewer</label>
+        <select id="viewer">
+          <option value="object" selected>&lt;object type="application/pdf"&gt;</option>
+          <option value="iframe">&lt;iframe&gt;</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="actions" style="margin-top:10px;">
+      <button id="btnLoad">Cargar PDF</button>
+      <button id="btnClear" class="secondary">Limpiar</button>
+      <a id="btnDownload" class="secondary" href="#" download="cv.pdf" target="_blank" rel="noreferrer" style="padding:8px 12px; border-radius:8px; border:1px solid #cbd5e1; background:#22c55e; color:#fff;">Descargar</a>
+      <span id="status" class="muted">Listo.</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div id="wrapObject">
+      <object id="obj" class="viewer" data="" type="application/pdf">
+        <div class="muted" style="padding:12px;text-align:center">
+          No se pudo previsualizar el PDF en &lt;object&gt;. <a id="fallback" href="#" target="_blank" class="link">Abrir/descargar</a>
+        </div>
+      </object>
+    </div>
+    <div id="wrapIframe" class="hide">
+      <iframe id="ifr" class="viewer" src=""></iframe>
+    </div>
+  </div>
+
+  <div class="card">
+    <b>Log</b>
+    <div id="log" class="log"></div>
+  </div>
+
+<script>
+(function(){
+  const $ = (id) => document.getElementById(id);
+  const urlInp = $("url");
+  const tokenTxt = $("token");
+  const acceptInp = $("accept");
+  const viewerSel = $("viewer");
+  const btnLoad = $("btnLoad");
+  const btnClear = $("btnClear");
+  const btnDownload = $("btnDownload");
+  const statusEl = $("status");
+  const obj = $("obj");
+  const ifr = $("ifr");
+  const wrapObject = $("wrapObject");
+  const wrapIframe = $("wrapIframe");
+  const logEl = $("log");
+  const fallback = $("fallback");
+
+  let currentBlobUrl = null;
+
+  function log(msg, kind="info"){
+    const ts = new Date().toLocaleTimeString();
+    logEl.textContent += `[${ts}] ${msg}\n`;
+    logEl.scrollTop = logEl.scrollHeight;
+    statusEl.textContent = msg;
+    statusEl.className = kind === "error" ? "error" : (kind === "ok" ? "ok" : "muted");
+  }
+
+  function revoke() {
+    if (currentBlobUrl) {
+      URL.revokeObjectURL(currentBlobUrl);
+      currentBlobUrl = null;
+    }
+  }
+
+  function setViewer(url){
+    const mode = viewerSel.value;
+    if (mode === "object") {
+      wrapObject.classList.remove("hide");
+      wrapIframe.classList.add("hide");
+      obj.data = url || "";
+    } else {
+      wrapIframe.classList.remove("hide");
+      wrapObject.classList.add("hide");
+      ifr.src = url || "";
+    }
+    btnDownload.href = url || "#";
+    fallback.href = url || "#";
+  }
+
+  async function loadPdf(){
+    revoke();
+    setViewer("");
+    const url = urlInp.value.trim();
+    const token = tokenTxt.value.trim();
+    const accept = acceptInp.value.trim() || "application/pdf";
+
+    if (!url) { log("Falta URL", "error"); return; }
+    if (!token) { log("Falta token", "error"); return; }
+
+    log(`Fetching ${url} ...`);
+
+    try {
+      const resp = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Accept": accept
+        },
+        // credentials: "include", // activalo si tu API usa cookies/sesión además del bearer
+      });
+
+      log(`HTTP ${resp.status}`);
+      if (!resp.ok) {
+        const t = await resp.text().catch(() => "");
+        log(`Error body (primero 300 chars): ${t.slice(0,300)}`, "error");
+        throw new Error(`HTTP ${resp.status}`);
+      }
+
+      let blob = await resp.blob();
+      log(`Content-Type: ${blob.type || "(none)"}`);
+      // fuerza a PDF si el server no setea el tipo
+      if (!String(blob.type || "").includes("pdf")) {
+        log("Forzando type application/pdf");
+        blob = new Blob([blob], { type: "application/pdf" });
+      }
+
+      const objUrl = URL.createObjectURL(blob);
+      currentBlobUrl = objUrl;
+      setViewer(objUrl);
+
+      log("OK — PDF cargado", "ok");
+    } catch (e) {
+      console.error(e);
+      log("No se pudo cargar el PDF", "error");
+    }
+  }
+
+  btnLoad.addEventListener("click", loadPdf);
+  btnClear.addEventListener("click", () => {
+    revoke();
+    setViewer("");
+    log("Limpio.");
+  });
+
+  // Prefill rápido (opcional): pegá acá tu token real si querés
+  // tokenTxt.value = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9....";
+
+})();
+</script>
+</body>
+</html>
