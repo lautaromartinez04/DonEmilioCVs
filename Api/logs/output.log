@@ -5772,3 +5772,11 @@ INFO:     192.168.0.123:53602 - "GET /unidades-negocio HTTP/1.1" 200 OK
 INFO:     192.168.0.123:53602 - "GET /usuarios HTTP/1.1" 200 OK
 INFO:     192.168.0.123:53604 - "GET /postulaciones/77/cv/inline HTTP/1.1" 200 OK
 INFO:     192.168.0.199:37826 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.161:50448 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.123:53608 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.123:53609 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     192.168.0.123:53610 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     192.168.0.123:53610 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     192.168.0.123:53609 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     192.168.0.123:53609 - "GET /postulaciones?estado=posible&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     192.168.0.123:53611 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
