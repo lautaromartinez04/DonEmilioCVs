@@ -24,6 +24,8 @@ class PostulacionOut(BaseModel):
     telefono: Optional[str]
     puesto_id: Optional[int]
     unidad_id: Optional[int]
+    puesto_original_id: Optional[int] = None
+    unidad_original_id: Optional[int] = None
     created_at: datetime
 
     # Antes: Literal["nueva", "destacada", "posible", "descartada"]
@@ -87,6 +89,8 @@ class PostulacionDecisionIn(BaseModel):
     # Ahora: str libre (podés usar, por ejemplo: "contactada", "entrevista", etc.)
     estado: str = Field(..., min_length=1, max_length=32)
     motivo: str = Field(..., min_length=3, max_length=255)
+    unidad_id: Optional[int] = None
+    puesto_id: Optional[int] = None
 
     class Config:
         from_attributes = True

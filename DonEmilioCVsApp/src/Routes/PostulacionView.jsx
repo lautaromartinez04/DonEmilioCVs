@@ -72,6 +72,8 @@ export default function PostulacionView() {
   // nombres resueltos (fallback si backend no trae .unidad/.puesto)
   const [unidadNombre, setUnidadNombre] = useState("-");
   const [puestoNombre, setPuestoNombre] = useState("-");
+  const [unidadOriginalNombre, setUnidadOriginalNombre] = useState("");
+  const [puestoOriginalNombre, setPuestoOriginalNombre] = useState("");
 
   // cv
   const [blob, setBlob] = useState(null);
@@ -143,6 +145,8 @@ export default function PostulacionView() {
         setCvUrl(null);
         setUnidadNombre("-");
         setPuestoNombre("-");
+        setUnidadOriginalNombre("");
+        setPuestoOriginalNombre("");
 
         // 1) datos del postulante
         const p = await PostulacionesAPI.get(id);
@@ -183,6 +187,8 @@ export default function PostulacionView() {
 
     const unidadId = postulacion?.unidad?.id ?? postulacion?.unidad_id ?? null;
     const puestoId = postulacion?.puesto?.id ?? postulacion?.puesto_id ?? null;
+    const uOrigId = postulacion?.unidad_original_id ?? null;
+    const pOrigId = postulacion?.puesto_original_id ?? null;
 
     const uName = postulacion?.unidad?.nombre || null;
     const pName = postulacion?.puesto?.nombre || null;
@@ -205,7 +211,26 @@ export default function PostulacionView() {
     if (!pName && !puestoById.get(String(puestoId)) && puestoId) {
       setPuestoNombre(`#${puestoId}`);
     }
-  }, [postulacion, unidadById, puestoById]);
+
+    if (uOrigId) {
+      const u = unidadById.get(String(uOrigId));
+      if (u?.nombre) setUnidadOriginalNombre(u.nombre);
+      else setUnidadOriginalNombre(`#${uOrigId}`);
+    } else {
+      setUnidadOriginalNombre(uName || unidadNombre); // fallback to current if empty
+    }
+
+    if (pOrigId) {
+      const p = puestoById.get(String(pOrigId));
+      if (p?.nombre) setPuestoOriginalNombre(p.nombre);
+      else setPuestoOriginalNombre(`#${pOrigId}`);
+    } else {
+      setPuestoOriginalNombre(pName || puestoNombre); // fallback to current if empty
+    }
+  }, [postulacion, unidadById, puestoById, unidadNombre, puestoNombre]);
+
+  const isReassigned = (postulacion?.unidad_original_id && postulacion?.unidad_original_id !== postulacion?.unidad_id) ||
+    (postulacion?.puesto_original_id && postulacion?.puesto_original_id !== postulacion?.puesto_id);
 
   const abrirNuevaPestana = () => {
     if (!blob) return;
@@ -304,8 +329,20 @@ export default function PostulacionView() {
 
             {/* Datos breves */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
-              <div className="text-sm text-gray-300"><strong className="font-bold text-gray-500 uppercase tracking-wider text-xs block mb-1">Unidad</strong> <span className="text-base font-bold text-gray-100">{unidadNombre}</span></div>
-              <div className="text-sm text-gray-300"><strong className="font-bold text-gray-500 uppercase tracking-wider text-xs block mb-1">Puesto</strong> <span className="text-base font-bold text-gray-100">{puestoNombre}</span></div>
+              <div className="text-sm text-gray-300">
+                <strong className="font-bold text-gray-500 uppercase tracking-wider text-xs block mb-1">Unidad</strong>
+                <span className="text-base font-bold text-gray-100">{unidadNombre}</span>
+                {unidadOriginalNombre && unidadOriginalNombre !== unidadNombre && (
+                  <div className="text-xs text-brand-400 mt-1 italic">El postulante pertenecía originalmente a: <span className="font-bold text-white">{unidadOriginalNombre}</span></div>
+                )}
+              </div>
+              <div className="text-sm text-gray-300">
+                <strong className="font-bold text-gray-500 uppercase tracking-wider text-xs block mb-1">Puesto</strong>
+                <span className="text-base font-bold text-gray-100">{puestoNombre}</span>
+                {puestoOriginalNombre && puestoOriginalNombre !== puestoNombre && (
+                  <div className="text-xs text-brand-400 mt-1 italic">El postulante pertenecía originalmente a: <span className="font-bold text-white">{puestoOriginalNombre}</span></div>
+                )}
+              </div>
             </div>
 
             <hr className="my-6 border-white/5" />
@@ -366,8 +403,23 @@ export default function PostulacionView() {
               <div className="col-span-1 md:col-span-2 text-sm text-gray-300 mt-1">
                 <strong className="font-bold text-gray-500 mr-2 flex items-start float-left">Motivo:</strong>{" "}
                 <span className="block pl-14 italic text-gray-400">{fmt(postulacion?.decidido_motivo)}</span>
+                {postulacion?.decidido_motivo && postulacion?.decidido_motivo !== "-" && (
+                  <div className="text-xs text-brand-400 mt-5 italic ">El postulante pertenecía originalmente a: <span className="font-bold text-white mr-1">{unidadOriginalNombre} - {puestoOriginalNombre}</span>
+                    pero debido a sus aptitudes y experiencia
+                    <span className="font-bold text-white ml-1 mr-1">
+                      {(() => {
+                        const uid = postulacion?.decidido_por_user_id;
+                        if (!uid) return "-";
+                        const u = userById.get(uid);
+                        return u ? `${u.nombre} ${u.apellido}`.trim() : `#${uid}`;
+                      })()}
+                    </span>
+                    lo asignó a: <span className="font-bold text-white ml-1">{unidadNombre} - {puestoNombre}</span>
+                  </div>
+                )}
               </div>
             </div>
+
           </div>
         </div>
       )}
@@ -406,6 +458,7 @@ export default function PostulacionView() {
         item={decidirItem}
         onClose={() => setDecidirItem(null)}
         onDecidido={onDecidido}
+        unidades={unidades}
       />
     </div>
   );

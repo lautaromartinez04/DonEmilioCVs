@@ -945,3 +945,149 @@ INFO:     connection closed
 INFO:     ('192.168.0.25', 63472) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
 INFO:     connection open
 INFO:     connection closed
+INFO:     Shutting down
+INFO:     connection closed
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [32692]
+INFO:     Stopping reloader process [9536]
+INFO:     Will watch for changes in these directories: ['C:\\Users\\Usuario\\Documents\\DonEmilioCVs\\Api']
+INFO:     Uvicorn running on http://0.0.0.0:7550 (Press CTRL+C to quit)
+INFO:     Started reloader process [7260] using WatchFiles
+INFO:     Started server process [22680]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'models\postulaciones.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [22680]
+INFO:     Started server process [23900]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'schemas\postulaciones.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [23900]
+INFO:     Started server process [4556]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'services\postulaciones.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [4556]
+INFO:     Started server process [14944]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'routers\postulaciones.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [14944]
+INFO:     Started server process [3736]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'routers\postulaciones.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3736]
+INFO:     Started server process [9728]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'services\postulaciones.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [9728]
+INFO:     Started server process [3592]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+(trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\Usuario\Documents\DonEmilioCVs\Api\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+INFO:     ('127.0.0.1', 50415) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     ('127.0.0.1', 50434) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     ('127.0.0.1', 50445) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     ('127.0.0.1', 50450) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     ('127.0.0.1', 50460) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     ('127.0.0.1', 50529) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     ('127.0.0.1', 50590) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     Shutting down
+INFO:     connection closed
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3592]
+INFO:     Stopping reloader process [7260]
+INFO:     Will watch for changes in these directories: ['C:\\Users\\Usuario\\Documents\\DonEmilioCVs\\Api']
+INFO:     Uvicorn running on http://0.0.0.0:7550 (Press CTRL+C to quit)
+INFO:     Started reloader process [16684] using WatchFiles
+INFO:     Started server process [3832]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     ('127.0.0.1', 51089) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     ('127.0.0.1', 51129) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     Shutting down
+INFO:     connection closed
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3832]
+INFO:     Stopping reloader process [16684]
+INFO:     Will watch for changes in these directories: ['C:\\Users\\Usuario\\Documents\\DonEmilioCVs\\Api']
+INFO:     Uvicorn running on http://0.0.0.0:7550 (Press CTRL+C to quit)
+INFO:     Started reloader process [8440] using WatchFiles
+INFO:     Started server process [9908]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     ('127.0.0.1', 51240) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     ('127.0.0.1', 53659) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     ('127.0.0.1', 53694) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     ('127.0.0.1', 53727) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+WARNING:  WatchFiles detected changes in 'services\postulaciones.py'. Reloading...
+INFO:     Shutting down
+INFO:     connection closed
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [9908]
+INFO:     Started server process [288]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     ('127.0.0.1', 53779) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     Shutting down
+INFO:     connection closed
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [288]
+INFO:     Stopping reloader process [8440]
+INFO:     Will watch for changes in these directories: ['C:\\Users\\Usuario\\Documents\\DonEmilioCVs\\Api']
+INFO:     Uvicorn running on http://0.0.0.0:7550 (Press CTRL+C to quit)
+INFO:     Started reloader process [13568] using WatchFiles

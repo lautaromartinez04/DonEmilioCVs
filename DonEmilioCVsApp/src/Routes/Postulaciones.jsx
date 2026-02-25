@@ -34,9 +34,9 @@ export default function Postulaciones() {
   const [filters, setFilters] = useState(() => {
     try {
       const saved = sessionStorage.getItem("postulaciones_filters");
-      return saved ? JSON.parse(saved) : { q: "", estado: "", unidadId: "", puestoId: "", sort: "reciente" };
+      return saved ? JSON.parse(saved) : { q: "", estado: "", unidadId: "", puestoId: "", sort: "reciente", tipo_filtro: "actual" };
     } catch {
-      return { q: "", estado: "", unidadId: "", puestoId: "", sort: "reciente" };
+      return { q: "", estado: "", unidadId: "", puestoId: "", sort: "reciente", tipo_filtro: "actual" };
     }
   });
 
@@ -110,6 +110,7 @@ export default function Postulaciones() {
         estado: filters.estado || undefined, // backend espera lowercase
         unidad_id: filters.unidadId || undefined,
         puesto_id: filters.puestoId || undefined,
+        tipo_filtro: filters.tipo_filtro || "actual",
         limit: pageSize,
         offset: (currentPage - 1) * pageSize,
         sort: filters.sort || "reciente",
@@ -277,6 +278,7 @@ export default function Postulaciones() {
         item={decidirItem}
         onClose={() => setDecidirItem(null)}
         onDecidido={onDecidido}
+        unidades={unidades}
       />
     </div>
   );

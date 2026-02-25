@@ -6295,3 +6295,332 @@ INFO:     192.168.0.25:63968 - "GET /postulaciones/counts HTTP/1.1" 200 OK
 INFO:     192.168.0.25:63996 - "GET /postulaciones/counts HTTP/1.1" 200 OK
 INFO:     192.168.0.199:60579 - "OPTIONS /postulaciones/counts HTTP/1.1" 200 OK
 INFO:     192.168.0.199:60579 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.199:48659 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.199:9603 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.199:14761 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.199:34896 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.199:8301 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.167:58160 - "GET /unidades-negocio?include_inactive=false HTTP/1.1" 200 OK
+INFO:     192.168.0.167:58160 - "GET /unidades-negocio?include_inactive=false HTTP/1.1" 200 OK
+INFO:     192.168.0.199:23934 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.199:22335 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.199:1778 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.199:1778 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.199:26965 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.199:29011 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.199:60802 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.199:40856 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.25:49236 - "GET /admin HTTP/1.1" 307 Temporary Redirect
+INFO:     192.168.0.25:49236 - "GET /admin/ HTTP/1.1" 200 OK
+INFO:     192.168.0.25:49236 - "GET /admin/assets/index-1JRVKVef.js HTTP/1.1" 200 OK
+INFO:     192.168.0.25:49237 - "GET /admin/assets/index-CuJzlgW_.css HTTP/1.1" 200 OK
+INFO:     192.168.0.25:49236 - "GET /admin/assets/fa-solid-900-8GirhLYJ.woff2 HTTP/1.1" 200 OK
+INFO:     192.168.0.25:49236 - "GET /admin/assets/fa-regular-400-BVHPE7da.woff2 HTTP/1.1" 200 OK
+INFO:     192.168.0.25:49236 - "GET /admin/dashboard HTTP/1.1" 200 OK
+INFO:     192.168.0.25:62432 - "GET /admin HTTP/1.1" 307 Temporary Redirect
+INFO:     192.168.0.25:62432 - "GET /admin/ HTTP/1.1" 200 OK
+INFO:     192.168.0.25:62433 - "GET /admin/assets/index-CuJzlgW_.css HTTP/1.1" 200 OK
+INFO:     192.168.0.25:62432 - "GET /admin/assets/index-1JRVKVef.js HTTP/1.1" 200 OK
+INFO:     192.168.0.25:62433 - "GET /admin/assets/fa-regular-400-BVHPE7da.woff2 HTTP/1.1" 200 OK
+INFO:     192.168.0.25:62432 - "GET /admin/assets/fa-solid-900-8GirhLYJ.woff2 HTTP/1.1" 200 OK
+INFO:     192.168.0.25:62436 - "GET /admin/vite.svg HTTP/1.1" 200 OK
+INFO:     192.168.0.25:63635 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.0.25:63635 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50404 - "OPTIONS /usuarios/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50404 - "POST /usuarios/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50404 - "OPTIONS /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50406 - "OPTIONS /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50404 - "OPTIONS /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50406 - "OPTIONS /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50404 - "OPTIONS /postulaciones?limit=200&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50406 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50406 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50404 - "GET /postulaciones?limit=200&offset=0 HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50404 - "OPTIONS /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50406 - "OPTIONS /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50413 - "OPTIONS /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50417 - "OPTIONS /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50418 - "OPTIONS /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50406 - "OPTIONS /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50416 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50404 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50413 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50416 - "OPTIONS /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50413 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50404 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50416 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50413 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50413 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50416 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50416 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50416 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50416 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50413 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50413 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50404 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50413 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50416 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50404 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50416 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50404 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50404 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50416 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50416 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50413 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50404 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50413 - "GET /postulaciones?limit=200&offset=0 HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50404 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50413 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50404 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50413 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50404 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50413 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50413 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50435 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50404 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50436 - "GET /postulaciones?limit=200&offset=0 HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50437 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50435 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50404 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50435 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50437 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50435 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50435 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50435 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50404 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50436 - "GET /postulaciones?limit=200&offset=0 HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50438 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50437 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50404 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50404 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50438 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50404 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50438 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50438 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50437 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50404 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50436 - "GET /postulaciones?limit=200&offset=0 HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50437 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50404 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50436 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50404 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50404 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50404 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50404 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50462 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50463 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50463 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50464 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50464 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50464 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50463 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50463 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50463 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50464 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50463 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50464 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50463 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50464 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50464 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50464 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50464 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50489 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50491 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50490 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50491 - "GET /postulaciones?limit=200&offset=0 HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50490 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50491 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50490 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50491 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50491 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50491 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50491 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50530 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50530 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50530 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50532 - "OPTIONS /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50533 - "OPTIONS /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50532 - "OPTIONS /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50533 - "OPTIONS /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50530 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50531 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50532 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50532 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50531 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50530 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50532 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50532 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50532 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50532 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50530 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50530 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50530 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50532 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50532 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50532 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50530 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50530 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50531 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50530 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50532 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50531 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50532 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50530 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50530 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50530 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50530 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50567 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50567 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50567 - "GET /postulaciones?limit=200&offset=0 HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50567 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50567 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50567 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50567 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50567 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50567 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:50567 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51071 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51104 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51105 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:51105 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51105 - "GET /postulaciones?limit=200&offset=0 HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:51105 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51105 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:51105 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51105 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51105 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:51105 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51105 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:51105 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51105 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51128 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     192.168.0.25:51169 - "GET /docs HTTP/1.1" 200 OK
+INFO:     192.168.0.25:51169 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51203 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51242 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51242 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51242 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51243 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51242 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51242 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51243 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51242 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51243 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51242 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51243 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51243 - "GET /postulaciones?estado=destacada&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51243 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51569 - "OPTIONS /postulaciones/114 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51571 - "OPTIONS /postulaciones/114 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51567 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51568 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51567 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51569 - "GET /postulaciones/114 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51567 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51569 - "GET /postulaciones/114 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51569 - "OPTIONS /postulaciones/114/cv/inline HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51569 - "GET /postulaciones/114/cv/inline HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51582 - "OPTIONS /postulaciones/114/decidir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51582 - "POST /postulaciones/114/decidir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51582 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51582 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51722 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51582 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51722 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51582 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51722 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51582 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51722 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51722 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51728 - "OPTIONS /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51728 - "GET /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51728 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51729 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51730 - "GET /postulaciones/114 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51729 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51730 - "GET /postulaciones/114 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51729 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51730 - "GET /postulaciones/114/cv/inline HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51828 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51828 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51829 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51894 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51895 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52437 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52438 - "OPTIONS /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52438 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52960 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53064 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53065 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53580 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53589 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53589 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53656 - "OPTIONS /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53657 - "OPTIONS /postulaciones/114 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53656 - "OPTIONS /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53658 - "OPTIONS /postulaciones/114 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53657 - "OPTIONS /postulaciones?limit=200&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53660 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53662 - "GET /postulaciones/114 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53661 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53662 - "GET /postulaciones/114 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53661 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53661 - "OPTIONS /postulaciones/114/cv/inline HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53658 - "GET /postulaciones?limit=200&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53661 - "GET /postulaciones/114/cv/inline HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53661 - "OPTIONS /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53661 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53672 - "OPTIONS /postulaciones/114/decidir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53672 - "POST /postulaciones/114/decidir HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53672 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53676 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /postulaciones/114 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53676 - "GET /postulaciones?limit=200&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53676 - "GET /postulaciones/114 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53676 - "GET /postulaciones/114/cv/inline HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53676 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53696 - "OPTIONS /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53697 - "OPTIONS /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53698 - "OPTIONS /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53696 - "OPTIONS /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53695 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53697 - "GET /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53695 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53697 - "GET /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53697 - "GET /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53697 - "GET /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53697 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53697 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53697 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53695 - "GET /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53695 - "GET /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53697 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53695 - "GET /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53697 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53695 - "GET /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53697 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53698 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53696 - "GET /postulaciones?limit=200&offset=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53714 - "GET /unidades-negocio HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53698 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53698 - "GET /usuarios HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /postulaciones?unidad_id=3&limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "OPTIONS /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53677 - "GET /postulaciones?limit=12&offset=0&sort=reciente HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53989 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54005 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54356 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54356 - "GET /postulaciones/counts HTTP/1.1" 200 OK

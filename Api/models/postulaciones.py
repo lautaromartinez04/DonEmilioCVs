@@ -16,6 +16,10 @@ class Postulacion(Base):
     puesto_id = Column(Integer, ForeignKey("puestos.id"), nullable=True)
     unidad_id = Column(Integer, ForeignKey("unidades_negocio.id"), nullable=True)
 
+    # --- Campos originales (para mantener historial) ---
+    puesto_original_id = Column(Integer, ForeignKey("puestos.id"), nullable=True)
+    unidad_original_id = Column(Integer, ForeignKey("unidades_negocio.id"), nullable=True)
+
     # --------------------------------------------------------
     # Estado ahora es un string libre, sin Enum/Literal.
     # Podés modificarlo libremente desde la API o la DB.
@@ -46,6 +50,8 @@ class Postulacion(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     # Relaciones
-    puesto = relationship("Puesto")
-    unidad = relationship("UnidadNegocio")
+    puesto = relationship("Puesto", foreign_keys=[puesto_id])
+    unidad = relationship("UnidadNegocio", foreign_keys=[unidad_id])
+    puesto_original = relationship("Puesto", foreign_keys=[puesto_original_id])
+    unidad_original = relationship("UnidadNegocio", foreign_keys=[unidad_original_id])
     decidido_por = relationship("Usuarios")  # opcional: usuario revisor

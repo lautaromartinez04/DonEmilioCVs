@@ -13,7 +13,7 @@ class PostulacionesService:
 
     # === LISTADO GENERAL CON FILTROS Y PAGINADO ===
     def list(self, q: Optional[str], estado: Optional[str], puesto_id: Optional[int],
-             unidad_id: Optional[int], limit: int, offset: int, sort: str = "reciente"):
+             unidad_id: Optional[int], tipo_filtro: str, limit: int, offset: int, sort: str = "reciente"):
         from models.puestos import Puesto
         from sqlalchemy import asc, desc, func as sa_func
         
@@ -31,7 +31,10 @@ class PostulacionesService:
             query = query.filter(Postulacion.estado == estado)
 
         if unidad_id:
-            query = query.filter(Postulacion.unidad_id == unidad_id)
+            if tipo_filtro == "original":
+                query = query.filter(Postulacion.unidad_original_id == unidad_id)
+            else:
+                query = query.filter(Postulacion.unidad_id == unidad_id)
             
             if puesto_id:
                 # Buscar si existe el puesto "Disponibilidad General" en esta unidad
@@ -42,11 +45,20 @@ class PostulacionesService:
                 
                 if puesto_general and puesto_general.id != puesto_id:
                     # Incluir postulaciones del puesto seleccionado O "Disponibilidad General"
-                    query = query.filter(Postulacion.puesto_id.in_([puesto_id, puesto_general.id]))
+                    if tipo_filtro == "original":
+                        query = query.filter(Postulacion.puesto_original_id.in_([puesto_id, puesto_general.id]))
+                    else:
+                        query = query.filter(Postulacion.puesto_id.in_([puesto_id, puesto_general.id]))
                 else:
-                    query = query.filter(Postulacion.puesto_id == puesto_id)
+                    if tipo_filtro == "original":
+                        query = query.filter(Postulacion.puesto_original_id == puesto_id)
+                    else:
+                        query = query.filter(Postulacion.puesto_id == puesto_id)
         elif puesto_id:
-            query = query.filter(Postulacion.puesto_id == puesto_id)
+            if tipo_filtro == "original":
+                query = query.filter(Postulacion.puesto_original_id == puesto_id)
+            else:
+                query = query.filter(Postulacion.puesto_id == puesto_id)
 
         # Ordenamiento
         _sort_map = {
@@ -85,6 +97,8 @@ class PostulacionesService:
         obj = Postulacion(
             nombre=nombre, apellido=apellido, correo=correo, telefono=telefono,
             puesto_id=puesto_id, unidad_id=unidad_id, estado="nueva", nota=nota,
+            # nuevos campos originales
+            puesto_original_id=puesto_id, unidad_original_id=unidad_id,
             cv_filename=cv_filename, cv_original=cv_original,
             cv_mime=cv_mime, cv_size=cv_size,
             # nuevos
@@ -101,7 +115,7 @@ class PostulacionesService:
         return obj
 
     # === DECIDIR / CAMBIAR ESTADO ===
-    def decide(self, id: int, *, new_estado: str, motivo: str, reviewer_user_id: int) -> Postulacion:
+    def decide(self, id: int, *, new_estado: str, motivo: str, reviewer_user_id: int, new_unidad_id: Optional[int] = None, new_puesto_id: Optional[int] = None) -> Postulacion:
         obj = self.get(id)
         if not obj:
             raise ValueError("No encontrado")
@@ -120,6 +134,12 @@ class PostulacionesService:
         obj.decidido_motivo = motivo
         obj.decidido_por_user_id = reviewer_user_id
         obj.decidido_en = datetime.now(timezone.utc)
+        
+        # Actualizar unidad y puesto si se envían
+        if new_unidad_id is not None:
+            obj.unidad_id = new_unidad_id
+        if new_puesto_id is not None:
+            obj.puesto_id = new_puesto_id
 
         self.db.commit()
         self.db.refresh(obj)
@@ -133,6 +153,8 @@ class PostulacionesService:
 
         payload = data.model_dump(exclude_unset=True)
         payload.pop("estado", None)  # 'estado' solo se cambia con decide()
+        payload.pop("unidad_original_id", None)  # nunca sobreescribir orig
+        payload.pop("puesto_original_id", None)  # nunca sobreescribir orig
 
         for k, v in payload.items():
             setattr(obj, k, v)

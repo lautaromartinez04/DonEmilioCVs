@@ -2,7 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
 import { PostulacionesAPI } from "../../api/postulaciones";
 
-const toast = Swal.mixin({ toast: true, position: "bottom", timer: 2500, showConfirmButton: false, timerProgressBar: true });
+const toast = Swal.mixin({
+  toast: true,
+  position: "bottom",
+  timer: 2500,
+  showConfirmButton: false,
+  timerProgressBar: true,
+  background: "#1f2937",
+  color: "#f3f4f6"
+});
 
 const ESTADOS = [
   { value: "Destacada", label: "Destacada" },
@@ -11,9 +19,11 @@ const ESTADOS = [
   { value: "Nueva", label: "Nueva" }
 ];
 
-export default function DecidirEstadoModal({ show, onClose, item, onDecidido }) {
+export default function DecidirEstadoModal({ show, onClose, item, onDecidido, unidades = [] }) {
   const [estado, setEstado] = useState("Destacada");
   const [motivo, setMotivo] = useState("");
+  const [unidadId, setUnidadId] = useState("");
+  const [puestoId, setPuestoId] = useState("");
   const [saving, setSaving] = useState(false);
   const ref = useRef(null);
 
@@ -24,6 +34,8 @@ export default function DecidirEstadoModal({ show, onClose, item, onDecidido }) 
       const exists = ESTADOS.some(e => e.value === curr);
       setEstado(exists ? curr : "Destacada");
       setMotivo("");
+      setUnidadId(item?.unidad_id || "");
+      setPuestoId(item?.puesto_id || "");
       setTimeout(() => ref.current?.querySelector("select")?.focus(), 0);
     }
   }, [show, item]);
@@ -31,11 +43,23 @@ export default function DecidirEstadoModal({ show, onClose, item, onDecidido }) 
   const submit = async (e) => {
     e.preventDefault();
     if (!estado) return;
+
+    const unidadCambiada = unidadId && String(unidadId) !== String(item?.unidad_id);
+    if (unidadCambiada && !puestoId) {
+      toast.fire({ icon: "error", title: "Debes asignar un nuevo puesto obligatoriamente" });
+      return;
+    }
+
     setSaving(true);
     try {
       const formattedEstado = estado.toLowerCase();
       const finalMotivo = motivo?.trim() || "Actualización de estado";
-      const payload = { estado: formattedEstado, motivo: finalMotivo };
+      const payload = {
+        estado: formattedEstado,
+        motivo: finalMotivo,
+        unidad_id: unidadId ? Number(unidadId) : null,
+        puesto_id: puestoId ? Number(puestoId) : null
+      };
       const upd = await PostulacionesAPI.decidir(item.id, payload);
       toast.fire({ icon: "success", title: "Estado actualizado" });
       onDecidido?.(upd);
@@ -48,6 +72,20 @@ export default function DecidirEstadoModal({ show, onClose, item, onDecidido }) 
   };
 
   if (!show || !item) return null;
+
+  // opciones de unidades y puestos
+  const unidadOptions = [{ id: "", nombre: "— Dejar igual/Sin asignar —" }, ...unidades];
+  const puestosDeUnidad = (() => {
+    if (!unidadId) return [];
+    const u = unidades.find(x => String(x.id) === String(unidadId));
+    return (u?.puestos || []).filter(p => p && p.nombre);
+  })();
+  const unidadOpcionesCambio = unidadId && String(unidadId) !== String(item?.unidad_id);
+  const puestoOptions = !unidadId
+    ? [{ id: "", nombre: "Elegí una unidad primero" }]
+    : unidadOpcionesCambio
+      ? [{ id: "", nombre: "— Seleccioná un puesto (Obligatorio) —" }, ...puestosDeUnidad]
+      : [{ id: "", nombre: "— Dejar igual/Sin asignar —" }, ...puestosDeUnidad];
 
   return (
     <div
@@ -81,6 +119,40 @@ export default function DecidirEstadoModal({ show, onClose, item, onDecidido }) 
                 <i className="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none text-xs" />
               </div>
             </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <div>
+                <label className="block text-sm font-bold text-gray-300 mb-2 ml-1 tracking-wide">Unidad a asignar</label>
+                <div className="relative">
+                  <select
+                    className="w-full pl-4 pr-10 py-3 bg-gray-800/50 hover:bg-gray-800 border border-white/10 rounded-xl focus:ring-4 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all duration-300 text-gray-100 font-medium appearance-none shadow-sm cursor-pointer disabled:opacity-50"
+                    value={unidadId}
+                    onChange={(e) => {
+                      setUnidadId(e.target.value);
+                      setPuestoId(""); // reset puesto al cambiar unidad
+                    }}
+                  >
+                    {unidadOptions.map(u => <option key={u.id} value={u.id}>{u.nombre}</option>)}
+                  </select>
+                  <i className="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none text-xs" />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-300 mb-2 ml-1 tracking-wide">Puesto a asignar</label>
+                <div className="relative">
+                  <select
+                    className="w-full pl-4 pr-10 py-3 bg-gray-800/50 hover:bg-gray-800 border border-white/10 rounded-xl focus:ring-4 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all duration-300 text-gray-100 font-medium appearance-none shadow-sm cursor-pointer disabled:opacity-50"
+                    value={puestoId}
+                    onChange={(e) => setPuestoId(e.target.value)}
+                    disabled={!unidadId}
+                  >
+                    {puestoOptions.map(p => <option key={p.id} value={p.id}>{p.nombre}</option>)}
+                  </select>
+                  <i className="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none text-xs" />
+                </div>
+              </div>
+            </div>
+
             <div>
               <label className="block text-sm font-bold text-gray-300 mb-2 ml-1 tracking-wide">Motivo <span className="text-gray-500 font-normal italic">(opcional)</span></label>
               <textarea

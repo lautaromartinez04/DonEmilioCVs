@@ -32,18 +32,37 @@ export default function PostulacionCard({
   const estado = (item.estado || "").toLowerCase();
   const fecha = formatDateAR(item.created_at || item.decidido_en);
 
-  // Resolver Unidad / Puesto (cast a Number por si vienen como string)
-  const unidadNombre =
+  // Resolver Unidad / Puesto Original (cast a Number por si vienen como string)
+  const unidadOriginalNombre =
+    item?.unidad_original?.nombre ??
+    unidadById?.get?.(Number(item.unidad_original_id))?.nombre ??
+    "-";
+
+  const puestoOriginalNombre =
+    item?.puesto_original?.nombre ??
+    puestoById?.get?.(Number(item.puesto_original_id))?.nombre ??
+    "-";
+
+  // Resolver Unidad / Puesto Actual (cast a Number por si vienen como string)
+  const unidadActualNombre =
     item?.unidad?.nombre ??
     item?.unidad_nombre ??
     unidadById?.get?.(Number(item.unidad_id))?.nombre ??
     "-";
 
-  const puestoNombre =
+  const puestoActualNombre =
     item?.puesto?.nombre ??
     item?.puesto_nombre ??
     puestoById?.get?.(Number(item.puesto_id))?.nombre ??
     "-";
+
+  // Fallback para mantener compatibilidad si no hay original guardado (viejos)
+  const displayUnidadNombre = unidadActualNombre;
+  const displayPuestoNombre = puestoActualNombre;
+
+  const hasReassignedUnidad = item.unidad_original_id && (item.unidad_original_id !== item.unidad_id);
+  const hasReassignedPuesto = item.puesto_original_id && (item.puesto_original_id !== item.puesto_id);
+  const isReassigned = hasReassignedUnidad || hasReassignedPuesto;
 
   // Decidido por: nombre de usuario si está disponible
   const decidedUser = userById?.get?.(Number(item.decidido_por_user_id)) || null;
@@ -92,24 +111,30 @@ export default function PostulacionCard({
             <div className="w-5 flex justify-center shrink-0"><i className="fa-regular fa-envelope text-gray-500 group-hover/info:text-brand-400 transition-colors text-xs" /></div>
             <span className="truncate tracking-wide ml-1.5">{item.correo || "-"}</span>
           </div>
-          <div className="text-sm text-gray-400 flex items-center group/info hover:text-gray-200 transition-colors min-w-0">
-            <div className="w-5 flex justify-center shrink-0"><i className="fa-solid fa-building text-gray-500 group-hover/info:text-brand-400 transition-colors text-xs" /></div>
-            <span className="truncate tracking-wide ml-1.5">{unidadNombre}</span>
+          <div className="text-sm text-gray-400 flex items-start group/info hover:text-gray-200 transition-colors min-w-0">
+            <div className="w-5 flex justify-center shrink-0 mt-0.5"><i className="fa-solid fa-building text-gray-500 group-hover/info:text-brand-400 transition-colors text-xs" /></div>
+            <div className="flex flex-col min-w-0 ml-1.5">
+              <span className="truncate tracking-wide">{displayUnidadNombre}</span>
+              {hasReassignedUnidad && <span className="text-[11px] text-brand-400/80 italic font-medium truncate">Original: {unidadOriginalNombre}</span>}
+            </div>
           </div>
           <div className="text-sm text-gray-400 flex items-center group/info hover:text-gray-200 transition-colors min-w-0">
             <div className="w-5 flex justify-center shrink-0"><i className="fa-solid fa-phone text-gray-500 group-hover/info:text-brand-400 transition-colors text-xs" /></div>
             <span className="truncate tracking-wide ml-1.5">{item.telefono || "-"}</span>
           </div>
-          <div className="text-sm text-gray-300 flex items-center group/info hover:text-brand-300 transition-colors min-w-0">
-            <div className="w-5 flex justify-center shrink-0"><i className="fa-solid fa-briefcase text-gray-500 group-hover/info:text-brand-400 transition-colors text-xs" /></div>
-            <span className="truncate font-semibold ml-1.5">{puestoNombre}</span>
+          <div className="text-sm text-gray-300 flex items-start group/info hover:text-brand-300 transition-colors min-w-0">
+            <div className="w-5 flex justify-center shrink-0 mt-0.5"><i className="fa-solid fa-briefcase text-gray-500 group-hover/info:text-brand-400 transition-colors text-xs" /></div>
+            <div className="flex flex-col min-w-0 ml-1.5">
+              <span className="truncate font-semibold">{displayPuestoNombre}</span>
+              {hasReassignedPuesto && <span className="text-[11px] text-brand-400/80 italic font-medium truncate">Original: {puestoOriginalNombre}</span>}
+            </div>
           </div>
         </div>
 
         {/* Mobile Only: Compact info */}
         <div className="flex lg:hidden flex-wrap gap-3 text-xs text-gray-400 w-full mb-2">
-          <span className="truncate"><i className="fa-solid fa-building mr-1 text-gray-500" />{unidadNombre}</span>
-          <span className="truncate font-semibold text-gray-300"><i className="fa-solid fa-briefcase mr-1 text-gray-500" />{puestoNombre}</span>
+          <span className="truncate"><i className="fa-solid fa-building mr-1 text-gray-500" />{displayUnidadNombre}</span>
+          <span className="truncate font-semibold text-gray-300"><i className="fa-solid fa-briefcase mr-1 text-gray-500" />{displayPuestoNombre}</span>
           <span className="truncate"><i className="fa-solid fa-phone mr-1 text-gray-500" />{item.telefono || "-"}</span>
         </div>
 
@@ -151,7 +176,7 @@ export default function PostulacionCard({
       </div> {/* <-- Closes Top Main Row */}
 
       {/* Bottom Conditional Row for Desc / Resolution */}
-      {(!!descripcion || item.decidido_motivo || decididoPor) && (
+      {(!!descripcion || item.decidido_motivo || decididoPor || isReassigned) && (
         <div className="pt-3 mt-1 border-t border-white/5 w-full relative z-10 flex flex-col gap-3">
           {!!descripcion && (
             <div className="text-sm text-gray-400 line-clamp-2 italic" title={descripcion}>

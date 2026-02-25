@@ -64,12 +64,13 @@ def list_postulaciones(
     estado: str | None = Query(default=None),
     puesto_id: int | None = Query(default=None),
     unidad_id: int | None = Query(default=None),
+    tipo_filtro: str = Query(default="actual", pattern="^(actual|original)$"),
     limit: int = Query(default=50, ge=1, le=200),
     offset: int = Query(default=0, ge=0),
     sort: str = Query(default="reciente", pattern="^(reciente|antiguo|nombre_az|nombre_za|procesado)$"),
     db: Session = Depends(get_db),
 ):
-    items, total = PostulacionesService(db).list(q, estado, puesto_id, unidad_id, limit, offset, sort)
+    items, total = PostulacionesService(db).list(q, estado, puesto_id, unidad_id, tipo_filtro, limit, offset, sort)
     return {"items": items, "total": total, "limit": limit, "offset": offset}
 
 
@@ -169,7 +170,8 @@ def decidir_postulacion(
         raise HTTPException(status_code=401, detail="No autenticado")
     try:
         obj = PostulacionesService(db).decide(
-            pid, new_estado=payload.estado, motivo=payload.motivo, reviewer_user_id=reviewer_id
+            pid, new_estado=payload.estado, motivo=payload.motivo, reviewer_user_id=reviewer_id,
+            new_unidad_id=payload.unidad_id, new_puesto_id=payload.puesto_id
         )
         # BROADCAST update
         background_tasks.add_task(manager.broadcast, "POSTULACION_UPDATED", {"id": obj.id, "estado": obj.estado})
