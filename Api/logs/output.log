@@ -6810,3 +6810,12 @@ INFO:     127.0.0.1:59709 - "POST /postulaciones/115/decidir HTTP/1.1" 200 OK
 INFO:     127.0.0.1:59709 - "GET /postulaciones/counts HTTP/1.1" 200 OK
 INFO:     127.0.0.1:59710 - "GET /postulaciones/counts HTTP/1.1" 200 OK
 INFO:     127.0.0.1:60204 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60330 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60331 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60797 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60798 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61226 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61230 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61327 - "OPTIONS /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61327 - "GET /postulaciones/counts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61328 - "GET /postulaciones/counts HTTP/1.1" 200 OK

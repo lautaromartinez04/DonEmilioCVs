@@ -1113,3 +1113,10 @@ INFO:     ('127.0.0.1', 58769) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
 INFO:     connection open
 INFO:     ('127.0.0.1', 58795) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
 INFO:     connection open
+INFO:     Shutting down
+INFO:     connection closed
+INFO:     connection closed
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [10708]
+INFO:     Stopping reloader process [13568]
