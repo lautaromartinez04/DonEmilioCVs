@@ -282,7 +282,7 @@ export default function PostulacionView() {
           </div>
         </div>
       )}
-      {!loading && msg && <div className="bg-green-50 border-l-4 border-green-500 p-4 mb-6 rounded-r-xl text-green-800"><i className="fa-solid fa-check mr-2"></i>{msg}</div>}
+      {!loading && msg && <div className="bg-green-900/20 border-l-4 border-green-500 p-4 mb-6 rounded-r-xl text-green-400 font-medium shadow-sm"><i className="fa-solid fa-check mr-2"></i>{msg}</div>}
 
       {/* Isla 1: datos + acciones */}
       {!loading && !err && (
@@ -403,7 +403,7 @@ export default function PostulacionView() {
               <div className="col-span-1 md:col-span-2 text-sm text-gray-300 mt-1">
                 <strong className="font-bold text-gray-500 mr-2 flex items-start float-left">Motivo:</strong>{" "}
                 <span className="block pl-14 italic text-gray-400">{fmt(postulacion?.decidido_motivo)}</span>
-                {postulacion?.decidido_motivo && postulacion?.decidido_motivo !== "-" && (
+                {postulacion?.decidido_motivo && postulacion?.decidido_motivo !== "-" && isReassigned && (
                   <div className="text-xs text-brand-400 mt-5 italic ">El postulante pertenecía originalmente a: <span className="font-bold text-white mr-1">{unidadOriginalNombre} - {puestoOriginalNombre}</span>
                     pero debido a sus aptitudes y experiencia
                     <span className="font-bold text-white ml-1 mr-1">

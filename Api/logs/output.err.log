@@ -1120,3 +1120,26 @@ INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
 INFO:     Finished server process [10708]
 INFO:     Stopping reloader process [13568]
+INFO:     Will watch for changes in these directories: ['C:\\Users\\Usuario\\Documents\\DonEmilioCVs\\Api']
+INFO:     Uvicorn running on http://0.0.0.0:7550 (Press CTRL+C to quit)
+INFO:     Started reloader process [13948] using WatchFiles
+INFO:     Started server process [8632]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     ('127.0.0.1', 63709) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     ('127.0.0.1', 63764) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     ('127.0.0.1', 63801) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     ('127.0.0.1', 63823) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     Shutting down
+INFO:     connection closed
+INFO:     connection closed
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [8632]
+INFO:     Stopping reloader process [13948]
