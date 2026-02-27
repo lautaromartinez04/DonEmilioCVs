@@ -33,7 +33,7 @@ export default function DecidirEstadoModal({ show, onClose, item, onDecidido, un
       const curr = String(item?.estado || "").toLowerCase();
       const exists = ESTADOS.some(e => e.value === curr);
       setEstado(exists ? curr : "Destacada");
-      setMotivo("");
+      setMotivo(item?.decidido_motivo || "");
       setUnidadId(item?.unidad_id || "");
       setPuestoId(item?.puesto_id || "");
       setTimeout(() => ref.current?.querySelector("select")?.focus(), 0);

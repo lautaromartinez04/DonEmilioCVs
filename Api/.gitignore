@@ -12,3 +12,6 @@ alembic.ini
 # IDEs
 .vscode/
 .idea/
+
+#logs 
+*.logs
