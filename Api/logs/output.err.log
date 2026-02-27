@@ -1257,3 +1257,19 @@ INFO:     connection closed
 INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
 INFO:     Finished server process [4120]
+INFO:     Started server process [24368]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     ('127.0.0.1', 63166) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
+WARNING:  WatchFiles detected changes in 'routers\postulaciones.py'. Reloading...
+INFO:     Shutting down
+INFO:     connection closed
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24368]
+INFO:     Started server process [19328]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     ('127.0.0.1', 63393) - "WebSocket /ws?id=1&nombre=Lautaro" [accepted]
+INFO:     connection open
