@@ -2,7 +2,7 @@
 const API_BASE = import.meta.env.VITE_API_URL || "http://192.168.0.25:8000";
 
 let _authToken = null;    // JWT Bearer (para admins)
-let _apiKey = null;       // X-API-Key global opcional
+let _apiKey = "Donemilio@2026";       // X-API-Key global
 let _basicUser = null;    // Basic Auth global (usuario)
 let _basicPass = null;    // Basic Auth global (password)
 
@@ -46,13 +46,9 @@ function applyAuthHeaders(h, opts) {
   const { auth = true, basic = false, apiKey = false } = opts || {};
 
   // --- API Key (X-API-Key) ---
-  // apiKey puede ser:
-  //  - string: se usa ese valor
-  //  - true:   se usa la global _apiKey
-  //  - false/omitida: no se envía
-  if (apiKey) {
-    const keyVal = typeof apiKey === "string" ? apiKey : _apiKey;
-    if (keyVal) h.set("X-API-Key", keyVal);
+  const keyVal = typeof apiKey === "string" ? apiKey : _apiKey;
+  if (keyVal) {
+    h.set("X-API-Key", keyVal);
   }
 
   // --- Basic Auth ---

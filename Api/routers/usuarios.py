@@ -20,7 +20,7 @@ def hash_password(password: str) -> str:
 def verify_password(plain: str, hashed: str) -> bool:
     return pwd_context.verify(plain, hashed)
 
-@router.post("", response_model=UsuarioOut)
+@router.post("", response_model=UsuarioOut, dependencies=[Depends(JWTBearer())])
 def create_usuario(payload: UsuarioCreate, db: Session = Depends(get_db)):
     svc = UsuariosService(db)
     if svc.get_by_email(payload.correo):

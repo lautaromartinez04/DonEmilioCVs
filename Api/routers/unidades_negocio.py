@@ -7,16 +7,17 @@ from schemas.unidades_negocio import (
     UnidadNegocioOutFull
 )
 from utils.authz import admin_required
+from utils.api_key import require_public_api_key
 
 router = APIRouter(prefix="/unidades-negocio", tags=["Unidades de negocio"])
 
 # LISTA con puestos embebidos (público)
-@router.get("", response_model=list[UnidadNegocioOutFull])
+@router.get("", response_model=list[UnidadNegocioOutFull], dependencies=[Depends(require_public_api_key)])
 def list_unidades(include_inactive: bool = Query(default=False), db: Session = Depends(get_db)):
     return UnidadesNegocioService(db).list_full(include_inactive=include_inactive)
 
 # GET por id con puestos embebidos (público)
-@router.get("/{uid}", response_model=UnidadNegocioOutFull)
+@router.get("/{uid}", response_model=UnidadNegocioOutFull, dependencies=[Depends(require_public_api_key)])
 def get_unidad(uid: int, db: Session = Depends(get_db)):
     obj = UnidadesNegocioService(db).get_full(uid)
     if not obj:

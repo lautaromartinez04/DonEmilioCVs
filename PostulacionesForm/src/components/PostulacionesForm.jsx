@@ -217,7 +217,10 @@ export default function PostulacionForm() {
 
       const res = await fetch(`${API_BASE}/postulaciones`, {
         method: "POST",
-        headers: { Accept: "application/json" },
+        headers: {
+          Accept: "application/json",
+          "X-API-Key": "Donemilio@2026"
+        },
         body: fd,
       });
 

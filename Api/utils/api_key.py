@@ -45,3 +45,8 @@ async def require_basic_or_api_key(
         detail="Invalid API credentials",
         headers={"WWW-Authenticate": 'Basic realm="api"'}
     )
+
+def require_public_api_key(api_key: str | None = Depends(api_key_header)):
+    if api_key != "Donemilio@2026":
+        raise HTTPException(status_code=401, detail="Invalid API Key")
+    return api_key

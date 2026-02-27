@@ -13,9 +13,9 @@ class PostulacionesService:
 
     # === LISTADO GENERAL CON FILTROS Y PAGINADO ===
     def list(self, q: Optional[str], estado: Optional[str], puesto_id: Optional[int],
-             unidad_id: Optional[int], tipo_filtro: str, limit: int, offset: int, sort: str = "reciente"):
+             unidad_id: Optional[int], limit: int, offset: int, sort: str = "reciente"):
         from models.puestos import Puesto
-        from sqlalchemy import asc, desc, func as sa_func
+        from sqlalchemy import asc, desc, func as sa_func, or_
         
         query = self.db.query(Postulacion)
 
@@ -31,10 +31,7 @@ class PostulacionesService:
             query = query.filter(Postulacion.estado == estado)
 
         if unidad_id:
-            if tipo_filtro == "original":
-                query = query.filter(Postulacion.unidad_original_id == unidad_id)
-            else:
-                query = query.filter(Postulacion.unidad_id == unidad_id)
+            query = query.filter(or_(Postulacion.unidad_id == unidad_id, Postulacion.unidad_original_id == unidad_id))
             
             if puesto_id:
                 # Buscar si existe el puesto "Disponibilidad General" en esta unidad
@@ -45,20 +42,20 @@ class PostulacionesService:
                 
                 if puesto_general and puesto_general.id != puesto_id:
                     # Incluir postulaciones del puesto seleccionado O "Disponibilidad General"
-                    if tipo_filtro == "original":
-                        query = query.filter(Postulacion.puesto_original_id.in_([puesto_id, puesto_general.id]))
-                    else:
-                        query = query.filter(Postulacion.puesto_id.in_([puesto_id, puesto_general.id]))
+                    query = query.filter(
+                        or_(
+                            Postulacion.puesto_id.in_([puesto_id, puesto_general.id]),
+                            Postulacion.puesto_original_id.in_([puesto_id, puesto_general.id])
+                        )
+                    )
                 else:
-                    if tipo_filtro == "original":
-                        query = query.filter(Postulacion.puesto_original_id == puesto_id)
-                    else:
-                        query = query.filter(Postulacion.puesto_id == puesto_id)
+                    query = query.filter(
+                        or_(Postulacion.puesto_id == puesto_id, Postulacion.puesto_original_id == puesto_id)
+                    )
         elif puesto_id:
-            if tipo_filtro == "original":
-                query = query.filter(Postulacion.puesto_original_id == puesto_id)
-            else:
-                query = query.filter(Postulacion.puesto_id == puesto_id)
+            query = query.filter(
+                or_(Postulacion.puesto_id == puesto_id, Postulacion.puesto_original_id == puesto_id)
+            )
 
         # Ordenamiento
         _sort_map = {

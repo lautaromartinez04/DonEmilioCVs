@@ -3,7 +3,10 @@ export const API_BASE = import.meta.env.VITE_API_URL || "http://192.168.0.25:800
 export async function fetchUnidadesNegocio() {
   const url = `${API_BASE}/unidades-negocio?include_inactive=false`;
   const res = await fetch(url, {
-    headers: { Accept: "application/json" },
+    headers: {
+      Accept: "application/json",
+      "X-API-Key": "Donemilio@2026"
+    },
   });
   if (!res.ok) {
     const text = await res.text().catch(() => "");

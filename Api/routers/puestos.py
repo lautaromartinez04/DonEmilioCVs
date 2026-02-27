@@ -4,10 +4,11 @@ from config.database import get_db
 from services.puestos import PuestosService
 from schemas.puestos import PuestoCreate, PuestoUpdate, PuestoOut
 from utils.authz import admin_required
+from utils.api_key import require_public_api_key
 
 router = APIRouter(prefix="/puestos", tags=["Puestos"])
 
-@router.get("", response_model=list[PuestoOut])  # público
+@router.get("", response_model=list[PuestoOut], dependencies=[Depends(require_public_api_key)])  # público
 def list_puestos(include_inactive: bool = Query(default=False), db: Session = Depends(get_db)):
     return PuestosService(db).list(include_inactive=include_inactive)
 

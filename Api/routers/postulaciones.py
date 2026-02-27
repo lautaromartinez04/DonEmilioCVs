@@ -12,6 +12,7 @@ from services.postulaciones import PostulacionesService
 from schemas.postulaciones import PostulacionOut, PostulacionUpdate, PostulacionDecisionIn
 from utils.files import save_upload_file_cv, cv_disk_path
 from utils.authz import admin_required
+from utils.api_key import require_public_api_key
 from utils.mailer import send_mail
 from utils.email_templates import candidate_confirmation, admin_new_cv
 from models.unidades_negocio import UnidadNegocio
@@ -64,13 +65,12 @@ def list_postulaciones(
     estado: str | None = Query(default=None),
     puesto_id: int | None = Query(default=None),
     unidad_id: int | None = Query(default=None),
-    tipo_filtro: str = Query(default="actual", pattern="^(actual|original)$"),
     limit: int = Query(default=50, ge=1, le=200),
     offset: int = Query(default=0, ge=0),
     sort: str = Query(default="reciente", pattern="^(reciente|antiguo|nombre_az|nombre_za|procesado)$"),
     db: Session = Depends(get_db),
 ):
-    items, total = PostulacionesService(db).list(q, estado, puesto_id, unidad_id, tipo_filtro, limit, offset, sort)
+    items, total = PostulacionesService(db).list(q, estado, puesto_id, unidad_id, limit, offset, sort)
     return {"items": items, "total": total, "limit": limit, "offset": offset}
 
 
@@ -83,7 +83,7 @@ def get_postulacion(pid: int, db: Session = Depends(get_db)):
 
 
 # Crear (público): SIEMPRE estado="nueva"
-@router.post("", response_model=PostulacionOut, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=PostulacionOut, status_code=status.HTTP_201_CREATED, dependencies=[Depends(require_public_api_key)])
 def create_postulacion(
     nombre: str = Form(...),
     apellido: str = Form(...),

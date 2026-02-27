@@ -46,7 +46,7 @@ export default function PostulacionesFilters({ unidades = [], value, onChange, e
 
   return (
     <div className="bg-gray-900/60 backdrop-blur-xl shadow-xl rounded-2xl border border-white/5 p-5 mb-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 items-end">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
         <div className="col-span-1">
           <label className="block text-sm font-semibold text-gray-300 mb-1 ml-1">Buscar</label>
           <input
@@ -57,17 +57,6 @@ export default function PostulacionesFilters({ unidades = [], value, onChange, e
           />
         </div>
 
-        <div className="col-span-1">
-          <label className="block text-sm font-semibold text-gray-300 mb-1 ml-1">Buscar en Puestos</label>
-          <select
-            className="w-full px-4 py-2.5 bg-gray-950/50 border border-white/10 rounded-xl focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 outline-none transition-all text-gray-100 shadow-inner appearance-none"
-            value={local.tipo_filtro || "actual"}
-            onChange={(e) => onField("tipo_filtro", e.target.value)}
-          >
-            <option value="actual" className="bg-gray-900 text-gray-100">Clasificación Actual</option>
-            <option value="original" className="bg-gray-900 text-gray-100">Postulación Original</option>
-          </select>
-        </div>
 
         <div className="col-span-1">
           <label className="block text-sm font-semibold text-gray-300 mb-1 ml-1">Estado</label>
