@@ -14,4 +14,4 @@ alembic.ini
 .idea/
 
 #logs 
-*.logs
+logs/

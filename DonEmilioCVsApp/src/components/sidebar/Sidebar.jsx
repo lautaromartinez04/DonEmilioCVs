@@ -1,6 +1,7 @@
 // src/components/sidebar/Sidebar.jsx
 import React from "react";
 import { NavLink } from "react-router-dom";
+import cv from "../../../public/cv.webp";
 
 const items = [
   { to: "/dashboard", icon: "fa-solid fa-gauge-high", label: "Dashboard" },
@@ -22,8 +23,10 @@ export default function Sidebar() {
       <div className="h-16 flex items-center justify-center border-b border-white/5 relative group shrink-0">
         <div className="absolute inset-0 bg-gradient-to-tr from-brand-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         <div className="font-[Lexend] font-bold text-brand-500 text-2xl relative z-10 transition-transform duration-300 flex items-center justify-center w-full h-full whitespace-nowrap">
-          <span className={`transition-all duration-300 ${collapsed ? "opacity-100 scale-100 absolute" : "opacity-0 scale-50 absolute"}`}>CVs</span>
-          <span className={`transition-all duration-300 tracking-tight text-xl ${collapsed ? "opacity-0 scale-50 absolute" : "opacity-100 scale-100 relative"}`}>DON EMILIO CVs</span>
+          <span className={`transition-all duration-300 ${collapsed ? "opacity-100 scale-100 absolute" : "opacity-0 scale-50 absolute"}`}>
+            <img src={cv} className="w-8 h-8" alt="" />
+          </span>
+          <span className={`transition-all duration-300 tracking-tight text-xl ${collapsed ? "opacity-0 scale-50 absolute" : "opacity-100 scale-100 relative"} flex items-center justify-center`}>DON EMILIO <img src={cv} className="w-6 h-6 ml-2" alt="" />s</span>
         </div>
       </div>
       <nav className="flex-1 py-6 px-3 space-y-2 overflow-y-auto overflow-x-hidden custom-scrollbar">

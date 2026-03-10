@@ -38,7 +38,8 @@ export default function App() {
               <i className="fa-solid fa-lock text-xs"></i>
               Tus datos se envían de forma segura.
             </span>
-            <span className="text-xs mt-1 font-medium bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Powered By Don Emilio DEVs</span>
+            <span className="text-xs mt-1 font-medium bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">Powered By Don Emilio DEVs © 2026</span>
+            <a href="https://wa.me/5493534826765" target="_blank" rel="noopener noreferrer"><span className="text-xs mt-1 font-medium bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent cursor-pointer border border-indigo-600 rounded-full px-2 py-1 hover:scale-105 transition-all duration-300">Si estas interesado en esta app click aqui</span></a>
           </p>
         </div>
       </div>
